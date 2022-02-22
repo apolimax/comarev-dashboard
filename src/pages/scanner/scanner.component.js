@@ -59,7 +59,7 @@ function Scanner() {
   );
 
   const handleBack = () => {
-    html5QrCodeRef.current.stop();
+    if (html5QrCodeRef.current) html5QrCodeRef.current.stop();
     history.push('/');
   };
 
@@ -82,6 +82,7 @@ function Scanner() {
         }
       })
       .catch((err) => {
+        console.log(err);
         alert('Tivemos um problema ao detectar sua câmera!');
       });
   }, [mutateAsync]);
